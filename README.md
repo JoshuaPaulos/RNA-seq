@@ -1,6 +1,6 @@
-*Quality Control:*
+## Quality Control:
 
-**Check Quality with FastQC**
+## Check Quality with FastQC
 # go to the make directory for lung and breast data
 [jpaulos@cbix2 ~]$ mkdir lung
 [jpaulos@cbix2 ~]$ mkdir breast 
@@ -36,7 +36,7 @@ lung_ENCFF002BUL_R2.fastq.gz  lung_ENCFF002BUM_R2.fastq.gz
 [jpaulos@cbix2 lung]$ for i in *.fastq.gz; do fastqc $i -o /home/jpaulos/lung/data/fastqc/;done
 
 
-**Trim Adapters and Low Quality Sequences**
+## Trim Adapters and Low Quality Sequences: 
 # still in the data directory
 [jpaulos]$ pwd
 /home/jpaulos/breast
@@ -61,9 +61,9 @@ lung_ENCFF002BUL_R2.fastq.gz  lung_ENCFF002BUM_R2.fastq.gz
 
 
 
-*Process Reads:*
+## Process Reads:
 
-**Align**
+## Align
 # go to the directory where the trimmed reads for breast data are 
 [jpaulos]$ pwd
 /home/jpaulos/breast/analysis
@@ -84,7 +84,8 @@ lung_ENCFF002BUL_R2.fastq.gz  lung_ENCFF002BUM_R2.fastq.gz
 # align with STAR
 [jpaulos@cbix2 01_trim]$ for i in *val_1.fq.gz; do STAR --genomeDir /mnt/data/gdata/human/hg38/star_index_hg38/ --readFilesIn $i ${i/R1_val_1/R2_val_2} --readFilesCommand zcat --outFileNamePrefix /home/jpaulos/lung/analysis/02_align/${i/R1*/} --outSAMtype BAM SortedByCoordinate; done
 
-**Count Features**
+## Count Features: 
+
 # go to the directory where the aligned reads breast data are
 [jpaulos]$ pwd
 /home/jpaulos/breast/analysis/02_align
