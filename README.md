@@ -5,20 +5,35 @@
 [jpaulos@cbix2 ~]$ mkdir lung
 [jpaulos@cbix2 ~]$ mkdir breast 
 
-# make a folder to put the output in
+# make a folder to put the output of breast data in
 [jpaulos@cbix2 breast]$ mkdir fastqc
 
-# make a folder to put the output in
+# make a folder to put the output lung data in
 [jpaulos@cbix2 lung]$ mkdir data
 [jpaulos@cbix2 data]$ mkdir fastqc
+
+# get breast tissue files 
+[jpaulos@cbix2 ~]$ cd /mnt/data/encode_tissue_data/
+[jpaulos@cbix2 encode_tissue_data]$ 
+[jpaulos@cbix2 encode_tissue_data]$ cd breast
+[jpaulos@cbix2 breast]$ ls
+breast_ENCFF268QLL_R1.fastq.gz  breast_ENCFF421LZH_R2.fastq.gz
+breast_ENCFF268QLL_R2.fastq.gz  breast_ENCFF767QVV_R1.fastq.gz
+breast_ENCFF421LZH_R1.fastq.gz  breast_ENCFF767QVV_R2.fastq.gz
 
 # run FastQC with a loop for breast data
 [jpaulos@cbix2 breast]$ for i in *.fastq.gz; do fastqc $i -o /home/jpaulos/breast/fastqc/;done
 
+# get lung tissue files 
+[jpaulos@cbix2 ~]$ cd /mnt/data/encode_tissue_data/
+[jpaulos@cbix2 encode_tissue_data]$ 
+[jpaulos@cbix2 encode_tissue_data]$ cd lung
+[jpaulos@cbix2 lung]$ ls
+lung_ENCFF002BUL_R1.fastq.gz  lung_ENCFF002BUM_R1.fastq.gz
+lung_ENCFF002BUL_R2.fastq.gz  lung_ENCFF002BUM_R2.fastq.gz
+
 # run FastQC with a loop for lung data
 [jpaulos@cbix2 lung]$ for i in *.fastq.gz; do fastqc $i -o /home/jpaulos/lung/data/fastqc/;done
-
-
 
 
 **Trim Adapters and Low Quality Sequences**
